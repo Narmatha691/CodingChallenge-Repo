@@ -1,0 +1,16 @@
+/* app.component.css */
+.custom-header {
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-header .btn {
+    margin-right: 10px;
+  }
+  
+  .custom-header .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  

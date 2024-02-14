@@ -11,6 +11,8 @@ namespace CodingChallengeAPI.Entities
         [Required]
         public string? Name { get; set; }
         [Required]
+        public string? Role { get; set; }
+        [Required]
         public string? UserEmail { get; set; }
         [Required]
         public string? Password { get; set; }

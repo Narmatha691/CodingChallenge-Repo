@@ -1,0 +1,55 @@
+<div class="register-form p-5 border">
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+                <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="userName" [(ngModel)]="user.name" required minlength="6"
+                maxlength="20" #userName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userName.errors }" />
+            <div *ngIf="f.submitted && userName.errors" class="invalid-feedback">
+                <div *ngIf="userName.errors['required']">userName is required</div>
+                <div *ngIf="userName.errors['minlength']">
+                    User Name must be at least 6 characters
+                </div>
+                <div *ngIf="userName.errors['maxlength']">
+                    UserN ame must be at most 20 characters
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="userEmail" [(ngModel)]="user.userEmail" required email
+                #userEmail="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userEmail.errors }" />
+            <div *ngIf="f.submitted && userEmail.errors" class="invalid-feedback">
+                <div *ngIf="userEmail.errors['required']">Email is required</div>
+                <div *ngIf="userEmail.errors['email']">Email is invalid</div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="user.password" required
+                minlength="6" maxlength="40" #password="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
+            <div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+                <div *ngIf="password.errors['required']">Password is required</div>
+                <div *ngIf="password.errors['minlength']">
+                    Password must be at least 6 characters
+                </div>
+                <div *ngIf="password.errors['maxlength']">
+                    Username must not exceed 40 characters
+                </div>
+            </div>
+        </div>
+
+        <div class="text-danger">{{errMsg}}</div>
+       <div class="form-group ">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="button" (click)="onReset(f)" class="btn btn-warning float-right">
+                Reset
+            </button>
+        </div>
+    </form>
+    <p>Already user! Redirect to login page: <button class="btn btn-primary" (click)="redirectToLogin()">Login</button></p>
+</div>
