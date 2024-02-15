@@ -1,0 +1,45 @@
+<div class="container">
+    <table class="table" >
+       <tr>
+           <td>Title</td>
+           <td>
+               <input type="text" [(ngModel)]="task.title" class="form-control">
+           </td>
+       </tr>
+       <tr>
+           <td>Description</td>
+           <td>
+               <input type="text" [(ngModel)]="task.description" class="form-control">
+           </td>
+       </tr>
+       <tr>
+        <td>Status</td>
+        <td>
+            <select class="form-control" [(ngModel)]="task.status">
+                <option value="ToDo">To Do</option>
+                <option value="InProgress">In Progress</option>
+            </select>
+        </td>
+    </tr>
+       <tr>
+        <td>Created Date</td>
+        <td>
+            <p class="card-text">{{ task.createdDate }}</p>
+        </td>
+    </tr>
+       <tr>
+           <td>Due date</td>
+           <td>
+               <!-- <input type="date" [(ngModel)]="task.dueDate" class="form-control"> -->
+               <input type="date" id="dueDate" name="dueDate" class="form-control" 
+           [(ngModel)]="task.dueDate" required [min]="today">
+           </td>
+       </tr>
+        <tr>
+            <td colspan="2">
+               <button class="btn btn-primary" (click)="Edit()">Edit</button> &nbsp;
+           </td>
+       </tr>
+
+   </table>
+</div>

@@ -3,6 +3,7 @@
     background-color: aquamarine;
     display: flex;
     align-items: center;
+    border-radius: 5px;
   }
   
   .custom-header .btn {

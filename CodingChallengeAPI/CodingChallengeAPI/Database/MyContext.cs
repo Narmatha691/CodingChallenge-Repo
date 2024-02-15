@@ -14,6 +14,7 @@ namespace CodingChallengeAPI.Database
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<TaskEntity> Tasks { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("MyConnString"));

@@ -15,7 +15,6 @@ import { FormsModule } from '@angular/forms';
 export class EditProfileComponent {
   user:User;
   userId?:any;
-  role?:any;
   errMsg: string = '';
   isUserExist: boolean = false;
   httpOptions = {
@@ -26,7 +25,6 @@ export class EditProfileComponent {
   };
   constructor(private router:Router,private activateRoute: ActivatedRoute,private http:HttpClient){
     this.user=new User();
-    this.role=localStorage.getItem('role');
    this.userId=localStorage.getItem('userId');
     console.log(this.userId);
     this.search();
@@ -34,7 +32,7 @@ export class EditProfileComponent {
   search() {
     this.http
       .get<User>(
-        'http://localhost:58502/api/User/GetUserById/' + this.userId,this.httpOptions
+        'http://localhost:5201/api/User/GetUserById/' + this.userId,this.httpOptions
       )
       .subscribe((response) => {
         console.log(response);
@@ -50,15 +48,10 @@ export class EditProfileComponent {
   }
   edit() {
     this.http
-      .put('http://localhost:58502/api/User/EditUser', this.user,this.httpOptions)
+      .put('http://localhost:5201/api/User/EditUser', this.user,this.httpOptions)
       .subscribe((response) => {
         console.log(response);
       });
-    if(localStorage.getItem('role')=="User"){
       this.router.navigateByUrl('user-dashboard');
-    }
-    else{
-      this.router.navigateByUrl('admin-dashboard');
-    }
   }
 }

@@ -167,7 +167,6 @@ namespace CodingChallengeAPI.Controllers
                 if (user != null)
                 {
                     authReponse.UserId = user.UserId;
-                    authReponse.Role = user.Role;
                     authReponse.Token = GetToken(user);
                 }
                 return StatusCode(200, authReponse);
@@ -192,7 +191,6 @@ namespace CodingChallengeAPI.Controllers
             var subject = new ClaimsIdentity(new[]
             {
                         new Claim(ClaimTypes.Name,user.Name),
-                        new Claim(ClaimTypes.Role, user.Role),
                         new Claim(ClaimTypes.Email,user.UserEmail),
                     });
 

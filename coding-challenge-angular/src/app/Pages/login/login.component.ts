@@ -33,21 +33,14 @@ export class LoginComponent {
 
   onSubmit(): void {
     console.log(this.login);
-          this.http.post('http://localhost:58502/api/User/Validate', this.login)
+          this.http.post('http://localhost:5201/api/User/Validate', this.login)
             .subscribe((response) => {
               this.httpResponse = response;
               console.log(this.httpResponse);
                 localStorage.setItem('token', this.httpResponse.token);
                 localStorage.setItem('userId', this.httpResponse.userId);
-                localStorage.setItem('role', this.httpResponse.role);
-                console.log(this.httpResponse.isAdmin);
-                if(this.httpResponse.Role=='Admin'){
-                  this.router.navigateByUrl('admin-dashboard');
-                }
-                else{
-                  this.router.navigateByUrl('user-dashboard');
-                }
-            });
+                this.router.navigateByUrl('user-dashboard');
+              });
 
           console.log(this.login.email);
           console.log(this.login.password);

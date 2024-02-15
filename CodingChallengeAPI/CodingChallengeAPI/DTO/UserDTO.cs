@@ -8,6 +8,5 @@ namespace CodingChallengeAPI.DTO
         public string? Name { get; set; }
         public string? UserEmail { get; set; }
         public string? Password { get; set; }
-        public string? Role { get; set; }
     }
 }

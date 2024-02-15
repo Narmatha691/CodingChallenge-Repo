@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<MyContext>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ITaskService, TaskService>();
 
 // Add services to the container.
 
@@ -90,14 +91,6 @@ options.AllowAnyOrigin() //allows any client url
 
 var app = builder.Build();
 
-//app.UseStaticFiles();
-//app.UseStaticFiles(new StaticFileOptions()
-//{
-//    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
-//    RequestPath = new PathString("/Resources")
-//});
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
